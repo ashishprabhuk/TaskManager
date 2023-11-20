@@ -3,10 +3,12 @@ import Board from "./Components/Board/Board";
 import "./App.css";
 import Editable from "./Components/Editabled/Editable";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./Components/Header.js";
+
 
 export default function App() {
   const [boards, setBoards] = useState(
-    JSON.parse(localStorage.getItem("Details")) || []
+    JSON.parse(localStorage.getItem("prac-kanban")) || []
   );
 
   const [targetCard, setTargetCard] = useState({
@@ -116,20 +118,11 @@ export default function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem("Details", JSON.stringify(boards));
-  }, [boards]);
-
-  useEffect(() => {
-    if (boards) {
-      localStorage.setItem("Details", JSON.stringify(boards));
-    }
+    localStorage.setItem("prac-kanban", JSON.stringify(boards));
   }, [boards]);
 
   return (
     <div className="app">
-      {/* <div className="app_nav">
-        <h1 id = "h1">Task Manager</h1>
-      </div> */}
       <div className="app_boards_container">
         <div className="app_boards">
           {boards.map((item) => (
@@ -159,12 +152,6 @@ export default function App() {
     </div>
   );
 }
-
-
-// import React, { useEffect, useState } from "react";
-// import Board from "./Components/Board/Board";
-// import "./App.css";
-// import Editable from "./Components/Editabled/Editable";
 
 // export default function App() {
 //   const [boards, setBoards] = useState(
@@ -281,8 +268,17 @@ export default function App() {
 //     localStorage.setItem("Details", JSON.stringify(boards));
 //   }, [boards]);
 
+//   useEffect(() => {
+//     if (boards) {
+//       localStorage.setItem("Details", JSON.stringify(boards));
+//     }
+//   }, [boards]);
+
 //   return (
 //     <div className="app">
+//       {/* <div className="app_nav">
+//         <h1 id = "h1">Task Manager</h1>
+//       </div> */}
 //       <div className="app_boards_container">
 //         <div className="app_boards">
 //           {boards.map((item) => (
@@ -312,3 +308,8 @@ export default function App() {
 //     </div>
 //   );
 // }
+
+
+
+
+
